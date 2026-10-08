@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kroki · Kısa, görsel dersler</title>
+<meta name="description" content="Kroki, merak ettiğin konuları birkaç dakikalık görsel derslerle anlatan bir uygulama. Yakında yayında.">
+<meta name="theme-color" content="#FAFAF7">
+<meta property="og:title" content="Kroki · Kısa, görsel dersler">
+<meta property="og:description" content="Merak ettiğin konular, birkaç dakikada, çizerek. Yakında yayında.">
+<meta property="og:url" content="https://learnwithkroki.com">
+<link rel="icon" href="assets/logo/kroki-k-blue.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/RedHatDisplay%5Bwght%5D.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face { font-family: "Red Hat Display"; src: url("assets/fonts/RedHatDisplay%5Bwght%5D.ttf") format("truetype"); font-weight: 300 900; font-display: swap; }
+@font-face { font-family: "Red Hat Text"; src: url("assets/fonts/RedHatText%5Bwght%5D.ttf") format("truetype"); font-weight: 300 700; font-display: swap; }
+
+:root {
+  --display: "Red Hat Display", "Helvetica Neue", Arial, sans-serif;
+  --text: "Red Hat Text", "Helvetica Neue", Arial, sans-serif;
+  --ink: #17181C; --muted: #5B5E66; --paper: #FAFAF7; --surface: #FFFFFF; --rule: #D9DCE2;
+  --brand: #2347B5; --brand-t: #E3E9F8; --on-brand: #FFFFFF; --marker: #F2C230;
+  --radius-m: 14px; --radius-pill: 999px;
+  --ease-pen: cubic-bezier(.5, 0, .3, 1);
+  --wrap: 1120px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #EEEDE8; --muted: #A3A3A8; --paper: #131418; --surface: #1C1D22; --rule: #2F3138;
+    --brand: #8EA8FF; --brand-t: #1F2740; --on-brand: #131418; --marker: #E9C341;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="light"]) .logo-ink { display: none; }
+  :root:not([data-theme="light"]) .logo-white { display: block; }
+  :root:not([data-theme="light"]) .defter { filter: invert(1); }
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* header */
+header { padding: 28px 0; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { display: block; height: 30px; width: auto; }
+.logo-white { display: none; }
+nav { display: flex; gap: 28px; font: 600 15px/1 var(--text); }
+nav a { text-decoration: none; color: var(--muted); transition: color .2s; }
+nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { position: relative; padding: 96px 0 120px; overflow: hidden; }
+.defter { position: absolute; inset: 0; background: url("assets/defter-ink.svg") repeat; background-size: 300px; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 85% 40%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 60% 70% at 85% 40%, #000 20%, transparent 75%); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 600 12px/1 var(--text); letter-spacing: .12em; text-transform: uppercase; color: var(--brand); }
+.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); animation: pulse 2.4s var(--ease-pen) infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+h1 { font: 800 clamp(44px, 7vw, 84px)/1.02 var(--display); letter-spacing: -.035em; margin: 22px 0 28px; }
+.k-mark { text-decoration: underline wavy var(--marker); text-decoration-thickness: 3px; text-underline-offset: .2em; text-decoration-skip-ink: none; }
+.lead { font-size: clamp(18px, 2vw, 21px); color: var(--muted); max-width: 30ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: var(--radius-pill); font: 600 16px/1 var(--text); text-decoration: none; transition: transform .2s var(--ease-pen), background .2s; }
+.btn-primary { background: var(--brand); color: var(--on-brand); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { border: 1.5px solid var(--rule); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* lesson card illustration */
+.card { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 28px; padding: 28px; box-shadow: 0 30px 60px -30px rgba(23,24,28,.25); max-width: 380px; justify-self: end; width: 100%; }
+.card-top { display: flex; justify-content: space-between; align-items: center; font: 600 13px/1 var(--text); color: var(--muted); }
+.progress { display: flex; gap: 6px; margin: 18px 0 26px; }
+.progress span { flex: 1; height: 5px; border-radius: 3px; background: var(--rule); }
+.progress span.on { background: var(--brand); }
+.card h3 { font: 800 26px/1.15 var(--display); letter-spacing: -.02em; margin-bottom: 18px; }
+.sketch { width: 100%; height: auto; display: block; margin-bottom: 20px; }
+.sketch path, .sketch line, .sketch circle, .sketch rect { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 1.8s var(--ease-pen) forwards; }
+.sketch .d2 { animation-delay: .5s; } .sketch .d3 { animation-delay: 1s; } .sketch .d4 { animation-delay: 1.4s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.sketch text { opacity: 0; animation: fade .6s ease forwards 1.6s; font: 600 12px var(--text); fill: var(--muted); stroke: none; }
+@keyframes fade { to { opacity: 1; } }
+.card-btn { display: block; text-align: center; padding: 14px; border-radius: var(--radius-pill); background: var(--brand); color: var(--on-brand); font: 600 15px/1 var(--text); }
+
+/* sections */
+section { padding: 110px 0; }
+.rule-top { border-top: 1px solid var(--rule); }
+.kicker { font: 600 12px/1 var(--text); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+h2 { font: 800 clamp(32px, 4.5vw, 52px)/1.08 var(--display); letter-spacing: -.03em; max-width: 18ch; }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.feature { padding: 32px 28px; background: var(--surface); border: 1px solid var(--rule); border-radius: 22px; }
+.feature .num { font: 800 15px/1 var(--display); color: var(--brand); font-variant-numeric: tabular-nums; }
+.feature h3 { font: 700 22px/1.2 var(--display); letter-spacing: -.01em; margin: 26px 0 10px; }
+.feature p { color: var(--muted); font-size: 16px; }
+
+.topics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 44px; }
+.topics span { padding: 11px 20px; border: 1px solid var(--rule); border-radius: var(--radius-pill); font: 600 15px/1 var(--text); background: var(--surface); }
+
+.about .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+.about p { font-size: 19px; color: var(--muted); }
+.about p + p { margin-top: 20px; }
+.about strong { color: var(--ink); font-weight: 600; }
+
+/* closing */
+.soon { background: var(--brand); color: var(--on-brand); border-radius: 32px; padding: 80px 48px; text-align: center; position: relative; overflow: hidden; }
+.soon img { height: 56px; width: auto; margin: 0 auto 28px; display: block; }
+.soon h2 { margin: 0 auto 18px; max-width: 16ch; }
+.soon p { opacity: .85; font-size: 18px; max-width: 42ch; margin: 0 auto 34px; }
+.soon .btn { background: var(--on-brand); color: var(--brand); }
+
+footer { padding: 48px 0 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease-pen), transform .8s var(--ease-pen); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .hero { padding: 48px 0 80px; }
+  .hero .wrap, .about .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .card { justify-self: start; }
+  .features { grid-template-columns: 1fr; }
+  section { padding: 80px 0; }
+  nav { display: none; }
+}
+@media (max-width: 480px) {
+  .wrap { padding: 0 16px; }
+  .soon { padding: 56px 24px; border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+  .sketch path, .sketch line, .sketch circle, .sketch rect { stroke-dashoffset: 0; }
+  .sketch text, .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#" aria-label="Kroki ana sayfa">
+      <img class="logo logo-ink" src="assets/logo/kroki-wordmark-ink.svg" alt="kroki">
+      <img class="logo logo-white" src="assets/logo/kroki-wordmark-white.svg" alt="kroki">
+    </a>
+    <nav>
+      <a href="#nasil">Nasıl?</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="mailto:eren@learnwithkroki.com">İletişim</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="defter" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Yakında yayında</span>
+        <h1>Merak ettiğin her şey, <span class="k-mark">çizerek</span> anlatılır.</h1>
+        <p class="lead">Kroki, zor konuları birkaç dakikalık görsel derslere dönüştüren bir uygulama. Kahve molanda bir şey öğren.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#hakkimizda">Kroki nedir?</a>
+          <a class="btn btn-ghost" href="mailto:eren@learnwithkroki.com">Bize yaz</a>
+        </div>
+      </div>
+
+      <div class="card" aria-hidden="true">
+        <div class="card-top"><span>Bölüm 1</span><span>2 / 5</span></div>
+        <div class="progress"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+        <h3>Bir köprü ağırlığı nereye taşır?</h3>
+        <svg class="sketch" viewBox="0 0 320 150" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 112 H306"/>
+          <path class="d2" d="M40 112 V70 M280 112 V70 M40 70 Q160 10 280 70"/>
+          <path class="d3" d="M40 70 H280 M80 70 V52 M120 70 V40 M160 70 V36 M200 70 V40 M240 70 V52"/>
+          <path class="d4" d="M160 92 V128 M152 120 L160 130 L168 120" stroke="#2347B5"/>
+          <text x="174" y="130">yük</text>
+          <text x="226" y="30">kablo</text>
+        </svg>
+        <span class="card-btn">Devam</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="nasil" class="rule-top">
+    <div class="wrap">
+      <p class="kicker reveal">Nasıl öğretiyoruz</p>
+      <h2 class="reveal">Kısa. Görsel. Akılda kalan.</h2>
+      <div class="features">
+        <div class="feature reveal">
+          <span class="num">01</span>
+          <h3>Birkaç dakika yeter</h3>
+          <p>Her ders kısa bölümlerden oluşur. Otobüste, kuyrukta, yatmadan önce. Bir bölümü bitirmek için ayrı bir zaman açman gerekmez.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">02</span>
+          <h3>Önce çizim, sonra söz</h3>
+          <p>Konuyu uzun paragraflarla değil, adım adım kurulan çizimlerle anlatırız. Ekranda gördüğün şey, aklında kalan şey olur.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">03</span>
+          <h3>Unutmaman için tekrar</h3>
+          <p>Öğrendiklerini doğru zamanda sana geri getiririz. Kısa sorularla bilgi yerine oturur.</p>
+        </div>
+      </div>
+      <div class="topics reveal" aria-label="Konu alanları">
+        <span>Para</span><span>Nasıl çalışır?</span><span>Teknoloji</span><span>Bilim ve beden</span><span>Tarih ve kültür</span><span>Toplum ve hukuk</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="hakkimizda" class="about rule-top">
+    <div class="wrap">
+      <div>
+        <p class="kicker reveal">Hakkımızda</p>
+        <h2 class="reveal">Karmaşık olanı sade anlatmak için buradayız.</h2>
+      </div>
+      <div class="reveal">
+        <p><strong>Kroki, Türkçe bir mikro öğrenme uygulaması.</strong> Faiz nasıl işler, bir köprü neden çökmez, uyurken beynimizde ne olur… Hepimizin merak edip bir türlü oturup okuyamadığı konuları kısa ve görsel derslere dönüştürüyoruz.</p>
+        <p>Adını, bir yeri tarif ederken kâğıda çizilen o basit kroki çiziminden aldık. Az çizgiyle çok şey anlatmayı seviyoruz: gereksiz ayrıntı yok, ezber yok, sadece konunun özü.</p>
+        <p>Her ders özenle yazılır ve doğruluğu kontrol edilir. Uygulama şu an yapım aşamasında. <strong>Çok yakında App Store’da.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="soon reveal">
+        <img src="assets/logo/kroki-k-white.svg" alt="" aria-hidden="true">
+        <h2>Çok yakında yayındayız.</h2>
+        <p>Sorun, öneriniz ya da iş birliği fikriniz varsa bize yazın. Her mesajı okuyoruz.</p>
+        <a class="btn" href="mailto:eren@learnwithkroki.com">eren@learnwithkroki.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kroki</span>
+    <a href="mailto:eren@learnwithkroki.com">eren@learnwithkroki.com</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>

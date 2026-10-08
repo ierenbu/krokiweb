@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-label="Defter deseni">
+  <!-- Kroki "Defter" pattern [owner 06.10.2026]. For empty areas on a course colour: course hero, category tiles, empty states.
+       Squares: white 9%. Doodles: white 55%, stroke 1.8, round caps. On paper use ink at 8% / 40%. Never behind running text. -->
+  <defs><pattern id="sq" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M14 0H0V14" fill="none" stroke="#17181C" stroke-opacity=".08" stroke-width="1"/></pattern></defs>
+  <rect width="300" height="300" fill="url(#sq)"/>
+  <g fill="none" stroke="#17181C" stroke-opacity=".40" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path id="arrow" d="M30 92 C52 62 104 52 150 70 C164 76 172 82 180 90 M169 84 L181 91 L167 96"/>
+    <path id="wave" d="M40 58 q6 -6 12 0 t12 0 t12 0"/>
+    <path id="star" d="M118 34 l3 7 7 1 -5 5 1 7 -6 -4 -6 4 1 -7 -5 -5 7 -1z"/>
+    <path id="loop" d="M268 128 c8 -5 18 -1 19 7 c1 8 -8 13 -15 10 c-6 -2 -8 -9 -3 -13"/>
+    <path id="plus" d="M24 112 v8 M20 116 h8"/>
+  </g>
+</svg>
